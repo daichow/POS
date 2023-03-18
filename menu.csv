@@ -1,0 +1,36 @@
+Category,Item,Price
+Pizza,Small pizza,$9.99
+Pizza,Medium pizza,$11.99
+Pizza,Large pizza,$14.99
+Pizza,Extra large pizza,$16.99
+Toppings,Pepperoni,$1.50
+Toppings,Mushroom,$1.25
+Toppings,Onion,$1.00
+Toppings,Green pepper,$1.00
+Toppings,Extra cheese,$1.50
+Toppings,Canadian bacon,$1.75
+Toppings,Pineapple,$1.50
+Toppings,Sausage,$1.75
+Toppings,Bacon,$1.75
+Wings,6 wings,$9.99
+Wings,10 wings,$13.99
+Wings,20 wings,$23.99
+Sauces,BBQ,$0.50
+Sauces,Buffalo,$0.50
+Sauces,Garlic Parmesan,$0.50
+Sauces,Honey Mustard,$0.50
+Burgers,Single cheeseburger,$6.99
+Burgers,Double cheeseburger,$8.99
+Burgers,Bacon cheeseburger,$7.99
+Burgers,Veggie burger,$6.99
+Sides,Fries,$3.99
+Sides,Onion rings,$4.99
+Drinks,Soft drink (16 oz),$2.99
+Drinks,Slushie (16 oz),$3.49
+Gyros,Chicken gyro,$7.99
+Gyros,Lamb gyro,$8.99
+Gyros,Veggie gyro,$6.99
+Sauces,Tzatziki,$0.50
+Sauces,Hot sauce,$0.50
+Sauces,Garlic sauce,$0.50
+Sauces,Ranch,$0.50

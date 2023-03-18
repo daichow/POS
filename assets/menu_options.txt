@@ -1,0 +1,91 @@
+COLOR SCHEME
+
+#9B1C1C
+#E59A24
+#FFFFFF
+
+#E13730
+#F8B644
+#FECB2F
+
+#F52214 LIGHT RED
+#F10016 NEON RED
+
+https://tagleby.myportfolio.com/albaik
+
+Develop a detailed list of menu items for a fast food place called University Pizza which includes canadian pricing as well. Some menu items to also include are mainly pizza, wings, burgers, gyros, fries, slushies, soft drinks, and onion rings. Also list various size and topping options for each category.
+
+University Pizza Menu:
+
+Pizza:
+
+    Small pizza: $9.99
+    Medium pizza: $11.99
+    Large pizza: $14.99
+    Extra large pizza: $16.99
+
+Toppings (each):
+
+    Pepperoni: $1.50
+    Mushroom: $1.25
+    Onion: $1.00
+    Green pepper: $1.00
+    Extra cheese: $1.50
+    Canadian bacon: $1.75
+    Pineapple: $1.50
+    Sausage: $1.75
+    Bacon: $1.75
+
+Wings:
+
+    6 wings: $9.99
+    10 wings: $13.99
+    20 wings: $23.99
+
+Sauces:
+
+    BBQ: $0.50
+    Buffalo: $0.50
+    Garlic Parmesan: $0.50
+    Honey Mustard: $0.50
+
+Burgers:
+
+    Single cheeseburger: $6.99
+    Double cheeseburger: $8.99
+    Bacon cheeseburger: $7.99
+    Veggie burger: $6.99
+
+Sides:
+
+    Fries: $3.99
+    Onion rings: $4.99
+
+Drinks:
+
+    Soft drink (16 oz): $2.99
+    Slushie (16 oz): $3.49
+
+Gyros:
+
+    Chicken gyro: $7.99
+    Lamb gyro: $8.99
+    Veggie gyro: $6.99
+
+Sauces:
+
+    Tzatziki: $0.50
+    Hot sauce: $0.50
+    Garlic sauce: $0.50
+    Ranch: $0.50
+
+
+Create a generalized python dictionary schema that works with all the menu items generated above.
+
+
+100-75 dollars 
+250-120 dollars
+500-150 dollars
+
+8.5 inches by 5.5 inches
+
