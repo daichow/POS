@@ -18,7 +18,7 @@ class MainView(FletView):
             Row(
                 alignment=MainAxisAlignment.START,
                 controls=[
-                    NavBar(controller, h=HEIGHT),
+                    # NavBar(controller, h=HEIGHT),
                     Container(content=Column(
                         alignment=MainAxisAlignment.START,
                         controls=[

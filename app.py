@@ -10,8 +10,6 @@ def update_ui(view, model):
     while True:
         view.item_list.update()
         view.cart.update()
-        # view.cart.controls[0].content.controls
-        # model.cart_list_view.current.controls
         time.sleep(0.1)
 
 
@@ -49,9 +47,7 @@ def main(page):
     # page.window_always_on_top = True
 
     # Run
-    page.add(
-        *view.content
-    )
+    page.add(*view.content)
 
     thread = threading.Thread(target=update_ui(view, model))
     thread.daemon = True
@@ -59,4 +55,4 @@ def main(page):
     page.update()
 
 
-ft.app(target=main)
+ft.app(target=main, assets_dir="assets")
