@@ -1,6 +1,9 @@
 from flet_mvc import FletController, alert
 from flet import colors
-from escpos.printer import Usb
+
+# from escpos.printer import Usb
+import subprocess
+import json
 
 # from api import luxmo_api
 import flet as ft
@@ -383,61 +386,57 @@ class Controller(FletController):
 
         order = order.split(";")
 
-        p = Usb(0x1FC9, 0x2016)
-
-        # HEADER
-        p.set(align="center", font="a", custom_size=True, width=3, height=3, bold=True)
-        p.text("UNIVERSITY PIZZA\n\n")
-        p.set(align="center", font="b", custom_size=True, width=2, height=1)
-        p.text("1457 University Ave West\n")
-        p.text("Windsor, Ontario, N9B1B8\n")
-        p.text("226-782-9600\n")
-        p.text("\n")
-
-        # DATETIME
-        p.set(align="right", font="a", custom_size=True, width=1, height=1, bold=False)
-        print(f"Date: {order[0].split(' ')[0]}\n")
-        p.text(f"Date: {order[0].split(' ')[0]}\n")
-        p.text(f"Time: {order[0].split(' ')[1]}\n")
-        p.text("\n")
-
-        # PRINT ITEMS
-        p.set(align="center", font="a", custom_size=True, width=1, height=1, bold=False)
+        datetime_list = [
+            f"Date: {order[0].split(' ')[0]}\n",
+            f"Time: {order[0].split(' ')[1]}\n",
+            "\n",
+        ]
+        item_list = []
         spacing = 40
         for item in current_cart:
-            p.text(
+            item_list.append(
                 "{:<{}}{}".format(
                     f"{item.quantity[1:]} x {item.item_name}",
                     spacing,
                     f"{item.cost}\n",
                 )
             )
-        p.text("\n")
+        item_list.append("\n")
 
-        # Print the totals
-        p.set(align="center", font="a", custom_size=True, width=1, height=1, bold=True)
         spacing = 30
-        p.text("{:<{}}{}".format("Method:", spacing, f"{order[2]}\n"))
-        p.text(
+        cost_list = [
+            "{:<{}}{}".format("Method:", spacing, f"{order[2]}\n"),
             "{:<{}}{}".format(
                 "Subtotal:", spacing, f"{self.model.subtotal.current.value}\n"
-            )
-        )
-        p.text(
+            ),
             "{:<{}}{}".format(
                 "Discount", spacing, f"-${self.model.discount.current.value}\n"
-            )
-        )
-        p.text(
-            "{:<{}}{}".format("Tax 13%:", spacing, f"{self.model.tax.current.value}\n")
-        )
-        p.text(
-            "{:<{}}{}".format("Total:", spacing, f"{self.model.total.current.value}\n")
-        )
-        p.text("\n")
+            ),
+            "{:<{}}{}".format("Tax 13%:", spacing, f"{self.model.tax.current.value}\n"),
+            "{:<{}}{}".format("Total:", spacing, f"{self.model.total.current.value}\n"),
+            "\n",
+        ]
 
-        # CLOSING
-        p.set(align="center", font="a", custom_size=True, width=1, height=1, bold=False)
-        p.text("Thank you for your business!\n")
-        p.cut()
-        p.close()
+        json_data = {
+            "cash": order[2] == "cash",
+            "datetime": datetime_list,
+            "item": item_list,
+            "cost": cost_list,
+        }
+
+        json_str = json.dumps(json_data)
+
+        # Password to use for sudo
+        password = "ASDF ;lkj"
+
+        # List of arguments to pass to the second script
+        cmd = ["sudo", "python3", "./printer.py"]
+
+        # Loop over each list of strings in the data list and append it to the arguments
+        # for lst in data:
+        #     args.extend(lst)
+
+        # Run the second script with sudo privileges and pass the password to it
+        result = subprocess.run(cmd, input=json_str.encode(), capture_output=True)
+        print(result.stdout.decode())
+        # output, error = process.communicate(password.encode())
