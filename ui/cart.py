@@ -23,7 +23,7 @@ from flet import (
     ButtonStyle,
     TextField,
 )
-from flet.types import TextAlign
+from flet import TextAlign
 from ui.cart_item import CartItem
 
 
@@ -48,7 +48,7 @@ class Cart(UserControl):
         # return a column of cards
         return Column(
             [
-                Container(
+                Container( # CONTAINS THE CART
                     padding=10,
                     border_radius=10,
                     alignment=alignment.top_center,
@@ -60,12 +60,13 @@ class Cart(UserControl):
                     ),
                     width=self.window_width * 0.3,
                     height=self.window_height * 0.5,
-                    bgcolor="black",
+                    bgcolor=colors.ON_SURFACE,
                 ),
-                Container(
+                Container( # CONTAINS THE TOTAL SECTION
                     padding=30,
                     border_radius=10,
                     alignment=alignment.top_center,
+                    bgcolor=colors.ON_SURFACE,
                     content=Column(
                         alignment=MainAxisAlignment.START,
                         horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -73,14 +74,14 @@ class Cart(UserControl):
                             Row(
                                 alignment=MainAxisAlignment.SPACE_BETWEEN,
                                 controls=[
-                                    Text("Subtotal"),
-                                    Text(ref=self.model.subtotal),
+                                    Text("Subtotal", color=colors.ON_PRIMARY),
+                                    Text("$0.00",ref=self.model.subtotal, color=colors.ON_PRIMARY),
                                 ],
                             ),
                             Row(
                                 alignment=MainAxisAlignment.SPACE_BETWEEN,
                                 controls=[
-                                    Text("Discount"),
+                                    Text("Discount", color=colors.ON_PRIMARY),
                                     TextField(
                                         ref=self.model.discount,
                                         border_color="transparent",
@@ -94,19 +95,20 @@ class Cart(UserControl):
                                         height=50,
                                         hint_text="0.00",
                                         on_change=lambda e: self.parent_controller.calculate_totals(),
+                                        color=colors.ON_PRIMARY
                                     ),
                                 ],
                             ),
                             Row(
                                 alignment=MainAxisAlignment.SPACE_BETWEEN,
-                                controls=[Text("Tax 13%"), Text(ref=self.model.tax)],
+                                controls=[Text("Tax 13%", color=colors.ON_PRIMARY), Text("$0.00",ref=self.model.tax, color=colors.ON_PRIMARY)],
                             ),
-                            Divider(height=5, color="white"),
+                            Divider(height=5, color=colors.ON_PRIMARY),
                             Row(
                                 alignment=MainAxisAlignment.SPACE_BETWEEN,
-                                controls=[Text("Total"), Text(ref=self.model.total)],
+                                controls=[Text("Total", color=colors.ON_PRIMARY), Text("$0.00",ref=self.model.total, color=colors.ON_PRIMARY)],
                             ),
-                            Divider(height=10, color="white"),
+                            Divider(height=10, color=colors.ON_PRIMARY),
                             # Text("Payment Method"),
                             Row(
                                 alignment=MainAxisAlignment.SPACE_BETWEEN,
@@ -116,10 +118,10 @@ class Cart(UserControl):
                                         width=100,
                                         height=50,
                                         border_radius=10,
-                                        bgcolor="white",
+                                        bgcolor=colors.PRIMARY,
                                         content=Icon(
                                             name=icons.ATTACH_MONEY_ROUNDED,
-                                            color=colors.GREEN,
+                                            color=colors.ON_PRIMARY,
                                         ),
                                         on_click=lambda e: self.parent_controller.pay_with_cash(
                                             self.model.total.current.value
@@ -130,9 +132,9 @@ class Cart(UserControl):
                                         width=100,
                                         height=50,
                                         border_radius=10,
-                                        bgcolor="white",
+                                        bgcolor=colors.PRIMARY,
                                         content=Icon(
-                                            name=icons.CREDIT_CARD, color=colors.BLACK
+                                            name=icons.CREDIT_CARD, color=colors.ON_PRIMARY
                                         ),
                                         on_click=lambda e: self.parent_controller.pay_with_card(),
                                     ),
@@ -140,8 +142,8 @@ class Cart(UserControl):
                             ),
                             ElevatedButton(
                                 "Place Order",
-                                color="black",
-                                bgcolor="white",
+                                color=colors.ON_PRIMARY,
+                                bgcolor=colors.PRIMARY,
                                 width=self.window_width * 0.2,
                                 height=50,
                                 style=ButtonStyle(
@@ -153,7 +155,7 @@ class Cart(UserControl):
                     ),
                     width=self.window_width * 0.3,
                     height=self.window_height * 0.5,
-                    bgcolor="black",
+                    # bgcolor="black",
                 ),
             ]
         )

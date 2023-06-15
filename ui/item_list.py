@@ -23,7 +23,7 @@ class ItemList(UserControl):
         container = Container(
             content=menu_column,
             border_radius=10,
-            bgcolor='black',
+            bgcolor=colors.SURFACE,
             height=self.model.HEIGHT*0.9,
         )
         return container

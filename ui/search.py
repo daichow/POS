@@ -11,8 +11,8 @@ class DropdownSearchBar(ft.UserControl):
     def __init__(self, parent_controller):
         # <- NOTE: see how I save the controller here
         self.parent_controller = parent_controller
-        self.item_number = ft.Text(size=9, italic=True,
-                                   color="white54")
+        self.item_number = ft.Text(size=12, italic=True,
+                                   color=colors.ON_PRIMARY)
         self.item_number.value = "search results:"
         super().__init__()
 
@@ -20,7 +20,7 @@ class DropdownSearchBar(ft.UserControl):
         _object_ = ft.Container(
             # width=450,
             height=50,
-            bgcolor='black',
+            bgcolor=colors.ON_SURFACE,
             border_radius=10,
             padding=ft.padding.only(top=15, left=21, right=21, bottom=15),
             clip_behavior=ft.ClipBehavior.HARD_EDGE,  # making sure there is no overflow
@@ -34,16 +34,18 @@ class DropdownSearchBar(ft.UserControl):
                         vertical_alignment=ft.CrossAxisAlignment.CENTER,
                         controls=[
                             ft.Icon(ft.icons.SEARCH_ROUNDED,
-                                    size=15, opacity=0.90),
+                                    size=20, opacity=0.90),
                             ft.TextField(
-                                border_color='transparent',
+                                border_color=colors.TRANSPARENT,
                                 height=20,
                                 expand=True,
-                                text_size=12,
+                                color=colors.ON_PRIMARY,
+                                text_size=14,
                                 content_padding=2,
-                                cursor_color='white',
+                                cursor_color=colors.ON_PRIMARY,
                                 cursor_width=1,
-                                hint_text='Search ...',
+                                hint_text='Search Item...',
+                                hint_style=TextStyle(color=colors.ON_PRIMARY),
                                 on_change=lambda e: (self.parent_controller.filter_search_items(
                                     e, result=self.item_number), self.update()),
                             ),

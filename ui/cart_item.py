@@ -14,7 +14,7 @@ class CartItem(ft.UserControl):
         return ft.Container(
             expand=True,
             height=50,
-            bgcolor='white10',
+            bgcolor=ft.colors.PRIMARY,
             border_radius=11,
             padding=ft.padding.only(left=10, right=10, top=10, bottom=10),
             content=ft.Row(
@@ -24,16 +24,16 @@ class CartItem(ft.UserControl):
                     ft.Container(
                         width=20,
                         height=20,
-                        bgcolor='white',
+                        bgcolor=ft.colors.ON_PRIMARY,
                         shape=ft.BoxShape.CIRCLE,
                         alignment=ft.alignment.center,
                         content=ft.Text(
-                            self.number, size=11, weight='bold', color='black')
+                            self.number, size=11, weight='bold', color=ft.colors.PRIMARY)
                     ),
 
-                    ft.Text(self.item_name, size=12),
-                    ft.Text(self.quantity, size=10, color='grey'),
-                    ft.Text(self.cost, size=14),
+                    ft.Text(self.item_name[:20], size=12, color=ft.colors.ON_PRIMARY,),
+                    ft.Text(self.quantity, size=10, color=ft.colors.ON_PRIMARY,),
+                    ft.Text(self.cost, size=14, color=ft.colors.ON_PRIMARY,),
                     ft.Container(
                         width=30,
                         height=30,

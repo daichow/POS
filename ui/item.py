@@ -30,7 +30,7 @@ class Item(UserControl):
         return Container(
             expand=True,
             # height=100,
-            bgcolor="white10",
+            bgcolor=colors.ON_SURFACE,
             border_radius=10,
             padding=padding.only(left=10, right=10, top=10, bottom=10),
             # bgcolor='pink',
@@ -42,9 +42,9 @@ class Item(UserControl):
                         alignment=MainAxisAlignment.CENTER,
                         horizontal_alignment=CrossAxisAlignment.CENTER,
                         controls=[
-                            Text(category, size=10, color="grey"),
-                            Text(name, size=16, text_align="center"),
-                            Text(price, size=14),
+                            Text(category, size=10, color=colors.ON_PRIMARY),
+                            Text(name, size=16, text_align="center", color=colors.ON_PRIMARY),
+                            Text(price, size=14, color=colors.ON_PRIMARY),
                         ],
                     ),
                     Column(
@@ -57,8 +57,8 @@ class Item(UserControl):
                                 width=40,
                                 height=40,
                                 border_radius=10,
-                                bgcolor="white",
-                                content=Icon(name=icons.ADD, color="black"),
+                                bgcolor=colors.PRIMARY,
+                                content=Icon(name=icons.ADD, color=colors.ON_PRIMARY),
                                 on_click=lambda e: self.parent_controller.add_to_cart(
                                     item_name=name, cost=price
                                 ),
@@ -67,8 +67,8 @@ class Item(UserControl):
                                 width=40,
                                 height=40,
                                 border_radius=10,
-                                bgcolor="white",
-                                content=Icon(name=icons.REMOVE, color="black"),
+                                bgcolor=colors.PRIMARY,
+                                content=Icon(name=icons.REMOVE, color=colors.ON_PRIMARY),
                                 on_click=lambda e: self.parent_controller.remove_from_cart(
                                     item_name=name, cost=price
                                 ),

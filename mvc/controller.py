@@ -3,6 +3,7 @@ from flet import colors
 
 # from escpos.printer import Usb
 import subprocess
+from subprocess import call
 import json
 
 # from api import luxmo_api
@@ -129,7 +130,7 @@ class Controller(FletController):
         if not self.model.menu():
             self.model.menu.reset()
 
-        print(self.model.menu(), "\n\n\n\n")
+        # print(self.model.menu(), "\n\n\n\n")
 
         result.value = f"search results: {len(self.model.menu())}"
 
@@ -437,6 +438,7 @@ class Controller(FletController):
         #     args.extend(lst)
 
         # Run the second script with sudo privileges and pass the password to it
-        result = subprocess.run(cmd, input=json_str.encode(), capture_output=True)
-        print(result.stdout.decode())
+        # result = subprocess.run(cmd, input=json_str.encode(), capture_output=True)
+        # print(result.stdout.decode())
+        call('echo {} | sudo -S {}'.format(password, cmd), shell=True)
         # output, error = process.communicate(password.encode())
