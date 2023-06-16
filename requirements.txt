@@ -1,7 +1,6 @@
-reportlab==3.6.12
-xmltodict==0.13.0
 pandas==1.5.2
 flet==0.7.4
-flet-mvc==0.0.3
+flet-mvc==0.1.0
 gspread==5.7.0
 rapidfuzz==2.13.7
+python-escpos==3.0a7

@@ -1,6 +1,6 @@
-from mvc.controller import Controller
-from mvc.view import MainView
-from mvc.model import Model
+from controllers.main import Controller
+from views.main import MainView
+from models.main import Model
 import threading
 import time
 import flet as ft
@@ -51,7 +51,7 @@ def main(page):
         on_primary="#00363d",
         primary_container="#004f58",
         on_primary_container="#97f0ff",
-        secondary='#b1cbd0',
+        secondary="#b1cbd0",
         on_secondary="#1c3438",
         secondary_container="#334b4f",
         on_secondary_container="#cde7ec",
@@ -79,7 +79,7 @@ def main(page):
     # model.create_checkboxes()
 
     # Settings
-    page.on_keyboard_event = controller.on_keyboard
+    # page.on_keyboard_event = controller.on_keyboard
 
     # window size
     WIDTH = 1000
@@ -100,7 +100,6 @@ def main(page):
     page.theme = theme.Theme(color_scheme=light_color_scheme)
     # page.theme = theme.Theme(color_scheme_seed='grey')
     page.bgcolor = ft.colors.SURFACE
-
     # page.window_always_on_top = True
 
     # Run
